@@ -1,0 +1,78 @@
+package entities;
+import g14.daoGenerator.strucutre.DaoHolder;
+import holder.ValueHolder;
+
+import java.util.Date;
+
+import dao.EmployeeDao;
+
+public class Employee {
+	int id;
+	String title;
+	String firstName;
+	String lastName;
+	Date birthDate;
+	
+	@DaoHolder(column="ReportsTo", dao= EmployeeDao.class)
+	ValueHolder<Employee> boss;
+	
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public Employee(int id, String title, String firstName, String lastName, Date birthDate) {
+		this.id = id;
+		this.title = title;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthDate = birthDate;
+	}
+
+	public Employee(String title, String firstName, String lastName, Date birthDate) {
+		this.title = title;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthDate = birthDate;
+	}
+	@Override
+	public String toString() {
+		return "Employee [title=" + title + ", firstName=" + firstName + ", lastName=" + lastName + ", birthDate=" + birthDate + "]";
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	public Employee getBoss(){
+	    return boss.value();
+	}
+}

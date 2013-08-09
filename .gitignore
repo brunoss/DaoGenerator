@@ -1,6 +1,1 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
+/orm/target/classes/orm/*.class
